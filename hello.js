@@ -32,8 +32,12 @@ const server = http.createServer((req, res) => {
       const _data = EJSON.parse(str);
 
       tempData = _data;
-      console.log('_data.excise: ' + _data.excise)
+      console.log('_data.excise: ' + _data)
       if (_data.excise>=0){
+        res.writeHead(200, headers);
+        res.write(("{\"result\":true}"))
+        res.end();
+      } else if (_data.fgtarget>0){
         res.writeHead(200, headers);
         res.write(("{\"result\":true}"))
         res.end();
